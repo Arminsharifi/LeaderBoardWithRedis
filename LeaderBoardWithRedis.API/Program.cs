@@ -17,7 +17,7 @@ try
     builder.Host.UseNLog();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-    builder.Services.AddScoped<ILeaderBoardRepository, LeaderBoardRepository>(provider =>
+    builder.Services.AddSingleton<ILeaderBoardRepository, LeaderBoardRepository>(provider =>
     {
         return LeaderBoardRepositoryFactory.CreateLeaderBoardRepository(builder.Configuration.GetConnectionString("Redis"));
     });
